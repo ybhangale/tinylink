@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from "react";
 
-// Helper function for clipboard copy
+
 function copyToClipboard(text: string) {
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text);
@@ -17,7 +17,7 @@ export default function Home() {
   const [copied, setCopied] = useState(false);
   const [rowCopied, setRowCopied] = useState<string | null>(null);
 
-  // Fetch all links on mount and after new link/deletion
+
   const fetchLinks = async () => {
     const res = await fetch("/api/links");
     const data = await res.json();
@@ -27,12 +27,12 @@ export default function Home() {
     fetchLinks();
   }, []);
 
-  // When a new short URL is created, refetch list
+ 
   useEffect(() => {
     if (shortUrl) fetchLinks();
   }, [shortUrl]);
 
-  // Show success for 2 seconds
+  
   useEffect(() => {
     if (copied) {
       const timer = setTimeout(() => setCopied(false), 2000);
@@ -40,7 +40,7 @@ export default function Home() {
     }
   }, [copied]);
 
-  // Show copied! feedback for table row
+ 
   useEffect(() => {
     if (rowCopied) {
       const timer = setTimeout(() => setRowCopied(null), 1500);
@@ -74,7 +74,7 @@ export default function Home() {
     if (!window.confirm(`Delete link "${code}"? This cannot be undone.`)) return;
     setLoading(true);
     await fetch(`/api/links/${code}`, { method: "DELETE" });
-    setShortUrl(""); // force refresh
+    setShortUrl(""); 
     await fetchLinks();
     setLoading(false);
   };
