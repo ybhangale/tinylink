@@ -1,4 +1,4 @@
-// pages/api/links.js
+
 import { Pool } from "pg";
 
 const pool = new Pool({
@@ -6,7 +6,7 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false }
 });
 
-// Helper for generating random code
+
 function generateShortCode(length = 6) {
   const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let code = "";
