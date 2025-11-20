@@ -1,4 +1,4 @@
-// pages/api/links/[code].js
+
 
 import { Pool } from "pg";
 
@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   }
 
   if (req.method === "GET") {
-    // Return info about a single short link
+   
     try {
       const result = await pool.query(
         "SELECT * FROM links WHERE short_code = $1",
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       res.status(500).json({ error: err.message });
     }
   } else if (req.method === "DELETE") {
-    // Delete a short link
+   
     try {
       const deleted = await pool.query(
         "DELETE FROM links WHERE short_code = $1 RETURNING *",
