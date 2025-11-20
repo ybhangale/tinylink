@@ -1,4 +1,4 @@
-// /pages/api/testdb.js
+
 
 import { Pool } from 'pg';
 
@@ -7,7 +7,7 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false },
 });
 
-// Default export required for Next.js API route!
+
 export default async function handler(req, res) {
   try {
     const result = await pool.query('SELECT NOW()');
